@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramanathan PL | Engineering Portfolio</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #05070a;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --primary: #3b82f6;
+            --secondary: #10b981;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 1.2rem 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(15px);
+            z-index: 1000; border-bottom: 1px solid var(--border);
+        }
+        .logo { font-weight: 800; font-size: 1.3rem; }
+        .logo span { color: var(--primary); }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav ul a { text-decoration: none; color: var(--text-dim); font-size: 0.8rem; font-weight: 700; transition: 0.3s; text-transform: uppercase; }
+        nav ul a:hover { color: var(--primary); }
+
+        /* Hero */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; background: radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.1), transparent 40%); }
+        .hero h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        .hero h1 span { color: var(--primary); }
+        .typewriter { color: var(--text-dim); font-size: 1.5rem; height: 1.6rem; font-weight: 400; }
+
+        /* Sections */
+        section { padding: 100px 10%; }
+        .section-header { margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 800; }
+        .section-header .line { width: 60px; height: 4px; background: var(--primary); margin-top: 10px; border-radius: 2px; }
+
+        /* About Card */
+        .about-card { background: var(--card-bg); border: 1px solid var(--border); padding: 3rem; border-radius: 24px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .info-box { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
+
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .skill-card { background: var(--card-bg); border: 1px solid var(--border); padding: 2rem; border-radius: 20px; transition: 0.3s; }
+        .skill-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .skill-card i { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .tag { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+
+        /* Projects */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 25px; }
+        .p-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 2rem; transition: 0.4s; position: relative; overflow: hidden;}
+        .p-card:hover { border-color: var(--secondary); }
+        .p-card h3 { font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--primary); }
+        .p-card p { font-size: 0.9rem; color: var(--text-dim); }
+        .p-badge { font-size: 0.7rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
+		.p-card a{text-decoration :none;}
+        /* Achievements */
+        .timeline { border-left: 2px solid var(--border); margin-left: 20px; padding-left: 30px; }
+        .t-item { position: relative; margin-bottom: 30px; }
+        .t-item::before { content: ''; position: absolute; left: -41px; top: 5px; width: 18px; height: 18px; background: var(--bg-dark); border: 3px solid var(--primary); border-radius: 50%; }
+
+        /* Contact */
+        .contact-cta { background: linear-gradient(145deg, #0f172a, #020617); padding: 4rem; border-radius: 35px; text-align: center; border: 1px solid var(--border); }
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+        .social-btn { width: 55px; height: 55px; border-radius: 15px; background: var(--text-main); color: var(--bg-dark); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; transition: 0.3s; }
+        .social-btn:hover { background: var(--primary); color: white; transform: translateY(-5px); }
+
+        @media (max-width: 850px) {
+            .hero h1 { font-size: 2.8rem; }
+            .about-card { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">RAMANATHAN<span>.PL</span></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1 data-aos="fade-up">Designing the Future<br><span>of Electronics.</span></h1>
+        <div class="typewriter" id="typewriter"></div>
+        <div style="margin-top: 40px;" data-aos="fade-up" data-aos-delay="200">
+            <a href="#projects" style="background: var(--primary); color: white; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 700;">View Portfolio</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Career Objective</h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-card" data-aos="fade-up">
+            <div>
+                <p style="color: var(--text-dim); font-size: 1.1rem;">
+                    Motivated engineering student with a deep interest in <b>Web Development</b>, <b>Computer Networking</b>, and <b>Embedded Systems</b>. Passionate about building practical projects and contributing to organizational growth.
+                </p>
+                <div class="info-grid">
+                    <div class="info-box"><small>DEGREE</small><br><b>B.E. ECE</b></div>
+                    <div class="info-box"><small>INSTITUTION</small><br><b>PSNA College</b></div>
+                    <div class="info-box"><small>CGPA</small><br><b>8.35</b></div>
+                    <div class="info-box"><small>LOCATION</small><br><b>Tamilnadu, India</b></div>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; border: 1px solid var(--border);">
+                <h4 style="margin-bottom: 15px;">Areas of Interest</h4>
+                <div class="tag">VLSI Design</div>
+                <div class="tag">Web Development</div>
+                <div class="tag">Embedded Systems</div>
+                <div class="tag">Sensor Integration</div>
+                <div class="tag">Product Development</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background: rgba(255,255,255,0.01);">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Technical Arsenal</h2>
+            <div class="line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card" data-aos="fade-up">
+                <i class="fas fa-code"></i>
+                <h3>Development</h3>
+                <div class="tag-container">
+                    <span class="tag">HTML5 / CSS3</span>
+                    <span class="tag">C (Data Structures)</span>
+                    <span class="tag">Core Java</span>
+                    <span class="tag">Embedded C</span>
+                </div>
+            </div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-network-wired"></i>
+                <h3>Networking & Protocols</h3>
+                <div class="tag-container">
+                    <span class="tag">TCP/IP</span>
+                    <span class="tag">UDP</span>
+                    <span class="tag">HTTP</span>
+                    <span class="tag">LoRa Communication</span>
+                </div>
+            </div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-tools"></i>
+                <h3>Tools & Platforms</h3>
+                <div class="tag-container">
+                    <span class="tag">VS Code</span>
+                    <span class="tag">Arduino IDE</span>
+                    <span class="tag">Cisco Packet Tracer</span>
+                    <span class="tag">ModelSim / Microwind</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Projects & Presentation</h2>
+            <div class="line"></div>
+        </div>
+        <div class="project-grid">
+            <div class="p-card" data-aos="zoom-in">
+                <span class="p-badge">IIT PALS Innovah Program</span>
+                <h3>Agriculture Rover</h3>
+                <p>Concept for smart farming: analyzing soil parameters and monitoring crop conditions to support precision agriculture.</p>
+            </div>
+            <div class="p-card" data-aos="zoom-in" data-aos-delay="100">
+                <span class="p-badge">Innowave Competition</span>
+                <h3>Women Shield AI</h3>
+                <p>An AI-based safety solution featuring smart threat detection, real-time location sharing, and emergency alert systems.</p>
+            </div>
+            <div class="p-card" data-aos="zoom-in" data-aos-delay="200">
+                <span class="p-badge">Internal SIH</span>
+                <h3>Disaster Evacuation</h3>
+                <p>Long-range low-power evacuation assistance system utilizing LoRa communication modules for emergency coordination.</p>
+            </div>
+            <div class="p-card" data-aos="zoom-in">
+                <span class="p-badge">CIT Coimbatore</span>
+                <h3>Line Follower Mini</h3>
+                <p>Developed a prototype for automated waste collection and management as a smart city automation concept.</p>
+            </div>
+            <div class="p-card" data-aos="zoom-in" data-aos-delay="100">
+                <span class="p-badge">Web Development</span>
+				<a href= "https://ramanathan-05.github.io/farmora/?v=10">
+                <h3>Farmora Website</h3></a>
+                <p>Multi-page HTML website for the project FARMORA with interconnected navigation and responsive structure. Deployed using GitHub Pages.</p>
+            </div>
+			<div class="p-card" data-aos="zoom-in" data-aos-delay="100">
+                <span class="p-badge">Web Development</span>
+                <h3>Responsive Website</h3>
+                <p>Created and customized a website using Wix with user-friendly design and content management features. Published the website online and made it
+                    accessible everywhere.</p>
+
+           </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Major Achievements</h2>
+            <div class="line"></div>
+        </div>
+        <div class="timeline">
+            <div class="t-item" data-aos="fade-left">
+                <strong>Second Prize - IIT PALS INNOWAH</strong>
+                <p style="color: var(--text-dim);">Innovation Competition held at IIT Madras.</p>
+            </div>
+            <div class="t-item" data-aos="fade-left">
+                <strong>Round 2 Selection - INNOVA 8</strong>
+                <p style="color: var(--text-dim);">Innovation Competition at Sarala Birla University, Ranchi.</p>
+            </div>
+            <div class="t-item" data-aos="fade-left">
+                <strong>Paper Presentation - MECHNOTRON 2k25</strong>
+                <p style="color: var(--text-dim);">Presented at Coimbatore Institute of Technology.</p>
+            </div>
+            <div class="t-item" data-aos="fade-left">
+                <strong>Innovation Finalist - AWS Cloud Champ</strong>
+                <p style="color: var(--text-dim);">Presented a Paper at PSNA College Innovation Competition.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-cta" data-aos="zoom-in">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Let's Connect</h2>
+            <p style="color: var(--text-dim);">Currently open to internships and collaborative tech projects.</p>
+            <div style="margin: 30px 0;">
+                <p><i class="fas fa-envelope" style="color: var(--primary);"></i> ramanathanpl01042005@gmail.com</p>
+                <p><i class="fas fa-phone" style="color: var(--primary);"></i> +91 9363577562</p>
+            </div>
+            <div class="social-links">
+                <a href="https://share.google/2AjnXOY53CyyHFF4s" class="social-btn" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/ramanathan-palaniyappan-8076582b7" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding-bottom: 50px; color: var(--text-dim); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px;">
+        &copy; 2025 RAMANATHAN PL | ECE ENGINEER
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        const text = "ECE Student | Web Developer | Embedded Systems Enthusiast";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 80);
+            }
+        }
+        type();
+    </script>
+</body>
+</html>
